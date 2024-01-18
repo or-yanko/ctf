@@ -51,7 +51,37 @@ url: http://natas4.natas.labs.overthewire.org
 username: natas4
 password: tKOcJIbzM4lTs8hbCmzn5Zr4434fGZQm
 solve:
-after i saw that i need to change the http req to be from natas5
-so i gonna do it with "tamper data" which is firefox extention
+I saw the headers of the req under "inspect" (F12) -> network -> Doc -> index.php -> Headers
+after i saw that i need to change the http req referrer header to "http://natas5.natas.labs.overthewire.org/" to be from natas5
+so i gonna do it with "requestly" which is chrome app and extension,
+So I made a new rule that 
+When you have req from "http://natas4.natas.labs.overthewire.org/index.php",
+Make the "Referer" header "http://natas5.natas.labs.overthewire.org/"
+(Made it in " https://app.requestly.io/rules/editor/edit/Headers_0uqfb "
+And got the page: Access granted. The password for natas5 is Z0NsrtIkJoKALBCLi5eqFfcRN82Au2oD
+
+___________________________________________________________________________________________
+
+level 5
+url: http://natas5.natas.labs.overthewire.org 
+username: natas5
+password: Z0NsrtIkJoKALBCLi5eqFfcRN82Au2oD
+solve:
+I have done the same but in this level I have changed the header "Cookie" to "loggedin=1" instead of "loggedin=0"
+And I got: Access granted. The password for natas6 is fOIvE0MDtPTgRhqmmvvAOt2EfXR6uQgR
+
+
+___________________________________________________________________________________________
+
+level 6
+url: http://natas6.natas.labs.overthewire.org 
+username: natas6
+password: fOIvE0MDtPTgRhqmmvvAOt2EfXR6uQgR
+solve:
+
+
+
+
+
 
 
