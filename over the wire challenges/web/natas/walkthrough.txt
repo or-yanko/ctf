@@ -51,5 +51,7 @@ url: http://natas4.natas.labs.overthewire.org
 username: natas4
 password: tKOcJIbzM4lTs8hbCmzn5Zr4434fGZQm
 solve:
+after i saw that i need to change the http req to be from natas5
+so i gonna do it with "tamper data" which is firefox extention
 
 
