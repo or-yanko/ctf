@@ -1,2 +1,55 @@
 ____natas____
 
+level 0
+url: http://natas0.natas.labs.overthewire.org 
+username: natas0
+password: natas0
+solve:
+do F12 to access html code of the site, scroll and see:
+<!--The password for natas1 is g9D9cREhslqBKtcA2uocGHPfMZVzeFK6 -->
+
+___________________________________________________________________________________________
+
+level 1
+url: http://natas1.natas.labs.overthewire.org 
+username: natas1
+password: g9D9cREhslqBKtcA2uocGHPfMZVzeFK6 
+solve:
+do F12 to access html code of the site, scroll and see:
+<!--The password for natas2 is h4ubbcXrWqsTo7GGnnUMLppXbOogfBZ7 -->
+
+___________________________________________________________________________________________
+
+level 2
+url: http://natas2.natas.labs.overthewire.org 
+username: natas2
+password: h4ubbcXrWqsTo7GGnnUMLppXbOogfBZ7 
+solve:
+do F12 to access html code of the site, scroll and see:
+<img src="files/pixel.png">
+enter to the url: http://natas2.natas.labs.overthewire.org/files/pixel.png and see its only pixel,
+entwr to: http://natas2.natas.labs.overthewire.org/files/ to see all the other files ande enter users.txt file.
+see there the password: natas3:G6ctbMJ5Nb4cbFwhpMPSvxGHhQ7I6W8Q
+
+___________________________________________________________________________________________
+
+level 3
+url: http://natas3.natas.labs.overthewire.org 
+username: natas3
+password: G6ctbMJ5Nb4cbFwhpMPSvxGHhQ7I6W8Q
+solve:
+do F12 to access html code of the site, scroll and see nothong...
+The /robots.txt is a de-facto standard, which means it is not published by any governing body but it is universally accepted. ( https://www.robotstxt.org/robotstxt.html )
+i will enter the domain http://natas3.natas.labs.overthewire.org/robots.txt and see: "Disallow: /s3cr3t/"
+enter the domain: http://natas3.natas.labs.overthewire.org/s3cr3t and enter to users.txt inside the domain.
+see there: natas4: tKOcJIbzM4lTs8hbCmzn5Zr4434fGZQm
+
+___________________________________________________________________________________________
+
+level 4
+url: http://natas4.natas.labs.overthewire.org 
+username: natas4
+password: tKOcJIbzM4lTs8hbCmzn5Zr4434fGZQm
+solve:
+
+
