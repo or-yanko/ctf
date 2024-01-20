@@ -181,13 +181,62 @@ url: http://natas11.natas.labs.overthewire.org
 username: natas11
 password: 1KFqoJXi6hRaPluAmk8ESDW4fSysRoIg
 solve:
+First I want to find the key, so I have the encrypted and decrypted data so I got the key by xoring both: because plaintext xor encyptedtext = key
+cookie:"MGw7JCQ5OC04PT8jOSpqdmkgJ25nbCorKCEkIzlscm5oKC4qLSgubjY" 
+With the code:
+<?php
+function xor_encrypt($in) {
+    $key = json_encode(array("showpassword"=>"no", "bgcolor"=> "#ffffff"));
+    $text = $in;
+    $outText = '';
+
+    // Iterate through each character
+    for($i=0;$i<strlen($text);$i++) {
+    $outText .= $text[$i] ^ $key[$i % strlen($key)];
+    }
+    return $outText;
+}
+
+
+#------finding the key------
+$cookie = xor_encrypt(base64_decode("MGw7JCQ5OC04PT8jOSpqdmkgJ25nbCorKCEkIzlscm5oKC4qLSgubjY"));
+echo "cookie:";
+echo $cookie;
+echo "\n";
+?>
+
+And I get: " cookie:KNHLKNHLKNHLKNHLKNHLKNHLKNHLKNHLKNHLKNHLK "
+So the key is: "KNHL" because the key is repeatable/
+
+And now I gonna use the key to make encrypted massage:
+By this code:
+<?php
+function xor_encrypt($in) {
+    $key = "KNHL";
+    $text = $in;
+    $outText = '';
+
+    // Iterate through each character
+    for($i=0;$i<strlen($text);$i++) {
+    $outText .= $text[$i] ^ $key[$i % strlen($key)];
+    }
+    return $outText;
+}
+#------encrypting spoofed data------
+$data = array("showpassword"=>"yes", "bgcolor"=> "#ffffff");
+echo base64_encode(xor_encrypt(json_encode($data)));
+?>
+And we get: " MGw7JCQ5OC04PT8jOSpqdmk3LT9pYmouLC0nICQ8anZpbS4qLSguKmkz "
+I spoof it to Cookie header and refresh the site, finally I got:
+"The password for natas12 is YWqo0pjpcXzSIl5NMAVxg12QxeC1w9QG "
+
 
 ___________________________________________________________________________________________
 
 level 12
 url: http://natas12.natas.labs.overthewire.org 
 username: natas12
-password: XXX
+password: YWqo0pjpcXzSIl5NMAVxg12QxeC1w9QG
 solve:
 
 ___________________________________________________________________________________________
